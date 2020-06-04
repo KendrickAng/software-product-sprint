@@ -4,15 +4,51 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon-16x16.png">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+    <nav>
+      <ul>
+        <li>
+          <a>Home 🏠</a>
+        </li>
+        <li>
+          <a>Origami 📃</a>
+        </li>
+        <li>
+          <a>Games 🎮</a>
+        </li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>Kendrick's Porfolio</h1>
+      <h3>Code, Origami, Games</h3>
+      <h3>Check out my resume!</h3>
+    </header>
+
+    <main>
+      <section>
+        <h1>My Curated Projects</h1>
+        <div>
+          <div>
+            Orbital
+          </div>
+          <div>
+            Scheduler
+          </div>
+          <div>
+            Duke
+          </div>
+        </div>
+      </section>
+    </main>
+  <footer>
+    <p>👇 Click here to get a random message: 👇</p>
+    <button onclick="addRandomGreeting()">Hello</button>
+    <div id="greeting-container"></div>
+  </footer>
+
   </body>
 </html>
