@@ -1,9 +1,75 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+:root {
+  --WOODSMOKE: #222629;
+  --EBONYCLAY: #474B4F;
+  --NEVADA: #61666a;
+  --SILVERSAND: #C5C6C7;
+  --AQUAMARINE: #66FCF1;
+  --KEPPEL: #45A29E;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--WOODSMOKE);
+  color: var(--SILVERSAND);
 }
 
+.nav {
+  display: flex;
+  background-color: var(--NEVADA);
+  padding: 16px 0;
+}
+.header {
+  background-color: var(--EBONYCLAY);
+  text-align: center;
+}
+.header__title {
+  margin: 0;
+  font-size: 64px;
+  color: var(--AQUAMARINE);
+}
+.header__subtitle {
+  font-size: 32px;
+  color: var(--SILVERSAND);
+}
+.header__cta {
+  color: var(--KEPPEL);
+}
+.content {
+  text-align: center;
+}
+.projects__items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 32px;
+  margin: 0 64px;
+}
+.projects__item {
+
+}
+.projects__card {
+  border: 5px solid var(--KEPPEL);
+  border-radius: 8px;
+}
+.projects__card > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.projects__card > span {
+  color: var(--AQUAMARINE);
+  font-size: 32px;
+}
+.footer{
+  text-align: center;
+  background-color: var(--EBONYCLAY);
+}
 #greeting-container {
   margin-top: 20px;
 }
