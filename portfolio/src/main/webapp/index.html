@@ -4,15 +4,68 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>Kendrick's Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+    <nav>
+      <div class="nav">
+        <div class="nav__item">
+          <a>Home 🏠</a>
+        </div>
+        <div class="nav__item">
+          <a>Origami 📃</a>
+        </div>
+        <div class="nav__item">
+          <a>Games 🎮</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="header">
+      <h1 class="header__title">Kendrick's Porfolio</h1>
+      <h3 class="header__subtitle">Code, Origami, Games!</h3>
+      <a class="header__cta" href="files/resume.pdf" target="_blank">Check out my resume!</a>
+    </header>
+
+    <main class="content">
+      <section>
+        <h1>My Work Experience</h1>
+        <section>NinjaVan</section>
+        <section>TheFanMetric</section>
+        <section>DSO National Laboratories</section>
+      </section>
+      <section>
+        <h1>My Curated Projects</h1>
+        <div class="projects__items">
+          <div class="projects__item">
+            <div class="projects__card">
+              <img src="images/orbital.png" alt="Orbital"/>
+              <span>Orbital</span>
+            </div>
+          </div>
+          <div class="projects__item">
+            <div class="projects__card">
+              <img src="images/scheduler.png" alt="Scheduler"/>
+              <span>Scheduler</span>
+            </div>
+          </div>
+          <div class="projects__item">
+            <div class="projects__card">
+              <img src="images/duke.png" alt="Duke"/>
+              <span>Duke</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  <footer class="footer">
+    <p>👇 Click here to get a random message: 👇</p>
+    <button onclick="addRandomGreeting()">Hello</button>
+    <span id="greeting-container"></span>
+  </footer>
+
   </body>
 </html>
