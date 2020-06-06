@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
@@ -9,18 +9,20 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <nav>
-      <div class="nav">
-        <div class="nav__item"><a>Home 🏠</a></div>
-        <div class="nav__item"><a>Origami 📃</a></div>
-        <div class="nav__item"><a>Games 🎮</a></div>
+    <nav class="nav">
+      <div class="nav__logo"><a href="index.html">HOME</a></div>
+      <div class="nav__items">
+        <div class="nav__item"><a href="origami.html">Origami 📃</a></div>
+        <div class="nav__item"><a href="games.html">Games 🎮</a></div>
       </div>
     </nav>
 
     <header class="header">
       <h1 class="header__title">Kendrick's Porfolio</h1>
       <h3 class="header__subtitle">Code, Origami, Games!</h3>
-      <a class="header__cta" href="files/resume.pdf" target="_blank">Check out my resume!</a>
+      <button class="header__cta">
+        <a href="files/resume.pdf" target="_blank">Check out my resume!</a>
+      </button>
     </header>
 
     <main class="content">

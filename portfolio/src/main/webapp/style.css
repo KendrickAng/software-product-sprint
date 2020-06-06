@@ -23,11 +23,35 @@ main,
 section{
   text-align: center;
 }
+a {
+  text-decoration: none; /* reset default styles */
+  color: -moz-default-color;
+}
+footer {
+  background-color: var(--NEVADA);
+  text-align: center;
+  font-size: 16px;
+  color: var(--WOODSMOKE);
+}
 
+/*
+  ########################## MAIN LANDING PAGE ##########################
+*/
 .nav {
   display: flex;
+  justify-content: space-between;
   background-color: var(--NEVADA);
-  padding: 16px 0;
+  padding: 16px 32px;
+}
+.nav__logo {
+  font-weight: bold;
+  font-size: 24px;
+}
+.nav__items {
+  display: flex;
+}
+.nav__item {
+  margin: 0 16px;
 }
 .header {
   background-color: var(--EBONYCLAY);
@@ -43,7 +67,7 @@ section{
   color: var(--SILVERSAND);
 }
 .header__cta {
-  color: var(--KEPPEL);
+  border-radius: 4px;
 }
 .content {
   text-align: center;
@@ -78,12 +102,16 @@ section{
   margin-top: 20px;
 }
 
+
+/*
+  ########################## ORIGAMI GALLERY ##########################
+*/
 #gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 32px;
   grid-row-gap: 32px;
-  margin: 0 auto;
+  margin: 32px auto;
 }
 .gallery__card {
   padding: 16px;
