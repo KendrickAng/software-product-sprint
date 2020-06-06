@@ -64,7 +64,7 @@ body {
 }
 .projects__card > span {
   color: var(--AQUAMARINE);
-  font-size: 32px;
+  font-size: 32px;:wq
 }
 .footer{
   text-align: center;
@@ -72,4 +72,14 @@ body {
 }
 #greeting-container {
   margin-top: 20px;
+}
+
+#gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 32px;
+}
+.gallery__card > img {
+  object-fit: cover;
+  width: 100%; /* force image to shrink to width specified by grid */
 }
