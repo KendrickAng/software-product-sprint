@@ -5,6 +5,13 @@
   --C4: #757575;
   --C5: #424242;
   --C6: #212121;
+  /*
+  Device width media queries
+  desktop: 1200px;
+  lgTablet: 992px;
+  tablet: 768px;
+  mobile: 480px;
+   */
 }
 * {
   box-sizing: border-box;
@@ -16,9 +23,6 @@ body {
   margin: 0;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-}
-main {
-  height: 90%; /* hacky workaround */
 }
 section{
   text-align: center;
@@ -53,6 +57,22 @@ footer {
 .nav__item {
   margin: 0 16px;
 }
+
+/* NAV ITEMS */
+@media only screen and (max-width: 480px) {
+  .nav {
+    padding: 8px 16px;
+  }
+  .nav__logo {
+    font-size: 16px;
+  }
+  .nav__item {
+    font-size: 12px;
+    margin: 0 4px;
+  }
+}
+
+
 .header {
   padding: 16px 0;
   text-align: center;
@@ -76,13 +96,31 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+/* MOBILE STYLES */
+@media only screen and (max-width: 480px) {
+  .header__title {
+    font-size: 36px;
+  }
+  .header__subtitle {
+    font-size: 24px;
+  }
+  .body__cta {
+    padding: 8px;
+    font-size: 20px;
+  }
+}
+
+/*
+  ########################## PROJECTS ##########################
+ */
 .projects__container {
   margin: 0 auto;
   width: 80vw;
 }
 .projects__items {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 64px;
   margin: 0 64px;
 }
@@ -102,6 +140,15 @@ footer {
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 480px) {
+  .projects__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 32px;
+    margin: 0 16px;
+  }
+}
 
 /*
   ########################## ORIGAMI GALLERY ##########################
@@ -112,7 +159,7 @@ footer {
   grid-column-gap: 32px;
   grid-row-gap: 32px;
   margin: 32px auto;
-  width: 100vw; /* */
+  width: 70vw; /* */
 }
 .gallery__card {
   padding: 16px;
@@ -125,8 +172,11 @@ footer {
 .gallery__card > div {
   text-align: center;
 }
-@media screen and (min-width: 1200px) {
+
+@media only screen and (max-width: 480px) {
   #gallery {
-    width: 1140px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
