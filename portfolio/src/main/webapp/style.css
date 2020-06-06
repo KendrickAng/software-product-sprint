@@ -50,12 +50,23 @@ footer {
 .nav__logo {
   font-weight: bold;
   font-size: 24px;
+  padding: 4px 4px;
+  border-radius: 4px;
+  transition: all 200ms;
+}
+.nav__logo:hover {
+  background-color: var(--C1);
 }
 .nav__items {
   display: flex;
 }
 .nav__item {
-  margin: 0 16px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 200ms;
+}
+.nav__item:hover {
+  background-color: var(--C1);
 }
 
 /* NAV ITEMS */
@@ -68,14 +79,17 @@ footer {
   }
   .nav__item {
     font-size: 12px;
-    margin: 0 4px;
+    padding: 4px 4px;
   }
 }
-
 
 .header {
   padding: 16px 0;
   text-align: center;
+}
+.header:hover {
+  animation: ulLeftRight 1s;
+  animation-fill-mode: forwards;
 }
 .header__title {
   margin: 0;
@@ -127,6 +141,7 @@ footer {
 .projects__card {
   border: 2px solid var(--C3);
   border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 .projects__card > img {
   width: 100%;
@@ -165,6 +180,7 @@ footer {
   padding: 16px;
   border: 2px solid var(--C3);
   border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 .gallery__card > img {
   width: 100%; /* force image to shrink to width specified by grid */
@@ -178,5 +194,3 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-
