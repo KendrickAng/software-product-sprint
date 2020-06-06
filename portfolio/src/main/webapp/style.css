@@ -19,6 +19,10 @@ body {
   background-color: var(--WOODSMOKE);
   color: var(--SILVERSAND);
 }
+main,
+section{
+  text-align: center;
+}
 
 .nav {
   display: flex;
@@ -78,8 +82,22 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 32px;
+  grid-row-gap: 32px;
+  margin: 0 auto;
+}
+.gallery__card {
+  padding: 16px;
+  border: 2px solid var(--KEPPEL);
+  border-radius: 8px;
 }
 .gallery__card > img {
-  object-fit: cover;
   width: 100%; /* force image to shrink to width specified by grid */
+}
+.gallery__card > div {
+  text-align: center;
+}
+@media screen and (min-width: 1200px) {
+  #gallery {
+    width: 1140px;
+  }
 }
