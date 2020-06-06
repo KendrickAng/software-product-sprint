@@ -1,10 +1,4 @@
 :root {
-  --WOODSMOKE: #222629;
-  --EBONYCLAY: #474B4F;
-  --NEVADA: #61666a;
-  --SILVERSAND: #C5C6C7;
-  --AQUAMARINE: #66FCF1;
-  --KEPPEL: #45A29E;
   --C1: #fafafa;
   --C2: #eeeeee;
   --C3: #bdbdbd;
@@ -23,7 +17,9 @@ body {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
 }
-main,
+main {
+  height: 90%; /* hacky workaround */
+}
 section{
   text-align: center;
 }
@@ -75,21 +71,23 @@ footer {
   padding: 16px;
 }
 .content {
-  height: 100%;
-  text-align: center;
-  background-color: var(--C2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.projects__container {
+  margin: 0 auto;
+  width: 80vw;
 }
 .projects__items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 32px;
+  grid-column-gap: 64px;
   margin: 0 64px;
 }
-.projects__item {
-
-}
 .projects__card {
-  border: 5px solid var(--C3);
+  border: 2px solid var(--C3);
   border-radius: 8px;
 }
 .projects__card > img {
@@ -97,8 +95,8 @@ footer {
   height: 300px;
   object-fit: cover;
 }
-.projects__card > span {
-  font-size: 32px;:wq
+.card__description {
+  font-size: 32px;
 }
 #greeting-container {
   margin-top: 20px;
@@ -110,10 +108,11 @@ footer {
 */
 #gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 32px;
   grid-row-gap: 32px;
   margin: 32px auto;
+  width: 100vw; /* */
 }
 .gallery__card {
   padding: 16px;
