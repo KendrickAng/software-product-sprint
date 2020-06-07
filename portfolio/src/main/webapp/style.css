@@ -29,7 +29,7 @@ section{
 }
 a {
   text-decoration: none; /* reset default styles */
-  color: -moz-default-color;
+  color: initial;
 }
 footer {
   background-color: var(--C2);
