@@ -1,71 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="./images/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
   </head>
   <body>
-    <nav>
-      <div class="nav">
+    <nav class="nav">
+      <div class="nav__logo"><a href="index.html">HOME</a></div>
+      <div class="nav__items">
         <div class="nav__item">
-          <a>Home 🏠</a>
+          <a href="projects.html">Projects</a>
         </div>
         <div class="nav__item">
-          <a>Origami 📃</a>
+          <a href="origami.html">Interests</a>
         </div>
         <div class="nav__item">
-          <a>Games 🎮</a>
+          <a href="https://github.com/KendrickAng" target="_blank">Github</a>
+        </div>
+        <div class="nav__item">
+          <a href="https://www.linkedin.com/in/kendrickang/" target="_blank">LinkedIn</a>
         </div>
       </div>
     </nav>
 
-    <header class="header">
-      <h1 class="header__title">Kendrick's Porfolio</h1>
-      <h3 class="header__subtitle">Code, Origami, Games!</h3>
-      <a class="header__cta" href="files/resume.pdf" target="_blank">Check out my resume!</a>
-    </header>
-
     <main class="content">
-      <section>
-        <h1>My Work Experience</h1>
-        <section>NinjaVan</section>
-        <section>TheFanMetric</section>
-        <section>DSO National Laboratories</section>
-      </section>
-      <section>
-        <h1>My Curated Projects</h1>
-        <div class="projects__items">
-          <div class="projects__item">
-            <div class="projects__card">
-              <img src="images/orbital.png" alt="Orbital"/>
-              <span>Orbital</span>
-            </div>
-          </div>
-          <div class="projects__item">
-            <div class="projects__card">
-              <img src="images/scheduler.png" alt="Scheduler"/>
-              <span>Scheduler</span>
-            </div>
-          </div>
-          <div class="projects__item">
-            <div class="projects__card">
-              <img src="images/duke.png" alt="Duke"/>
-              <span>Duke</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="header">
+        <h1 class="header__title">Kendrick Ang</h1>
+        <h3 class="header__subtitle">Software Engineer 😊 @ National University of Singapore</h3>
+      </div>
+        <button class="body__cta">
+          <a href="files/resume.pdf" target="_blank">See what I've been up to!</a>
+        </button>
+
     </main>
-
-  <footer class="footer">
-    <p>👇 Click here to get a random message: 👇</p>
-    <button onclick="addRandomGreeting()">Hello</button>
-    <span id="greeting-container"></span>
-  </footer>
-
   </body>
 </html>

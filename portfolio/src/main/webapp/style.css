@@ -1,10 +1,17 @@
 :root {
-  --WOODSMOKE: #222629;
-  --EBONYCLAY: #474B4F;
-  --NEVADA: #61666a;
-  --SILVERSAND: #C5C6C7;
-  --AQUAMARINE: #66FCF1;
-  --KEPPEL: #45A29E;
+  --C1: #fafafa;
+  --C2: #eeeeee;
+  --C3: #bdbdbd;
+  --C4: #757575;
+  --C5: #424242;
+  --C6: #212121;
+  /*
+  Device width media queries
+  desktop: 1200px;
+  lgTablet: 992px;
+  tablet: 768px;
+  mobile: 480px;
+   */
 }
 * {
   box-sizing: border-box;
@@ -16,60 +23,174 @@ body {
   margin: 0;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--WOODSMOKE);
-  color: var(--SILVERSAND);
+}
+section{
+  text-align: center;
+}
+a {
+  text-decoration: none; /* reset default styles */
+  color: initial;
+}
+footer {
+  background-color: var(--C2);
+  text-align: center;
+  font-size: 16px;
 }
 
+/*
+  ########################## MAIN LANDING PAGE ##########################
+*/
 .nav {
   display: flex;
-  background-color: var(--NEVADA);
-  padding: 16px 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--C3);
+  padding: 16px 32px;
 }
+.nav__logo {
+  font-weight: bold;
+  font-size: 24px;
+  padding: 4px 4px;
+  border-radius: 4px;
+  transition: all 200ms;
+}
+.nav__logo:hover {
+  background-color: var(--C1);
+}
+.nav__items {
+  display: flex;
+}
+.nav__item {
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 200ms;
+}
+.nav__item:hover {
+  background-color: var(--C1);
+}
+
+/* NAV ITEMS */
+@media only screen and (max-width: 480px) {
+  .nav {
+    padding: 8px 16px;
+  }
+  .nav__logo {
+    font-size: 16px;
+  }
+  .nav__item {
+    font-size: 12px;
+    padding: 4px 4px;
+  }
+}
+
 .header {
-  background-color: var(--EBONYCLAY);
+  padding: 16px 0;
   text-align: center;
+}
+.header:hover {
+  animation: ulLeftRight 1s;
+  animation-fill-mode: forwards;
 }
 .header__title {
   margin: 0;
   font-size: 64px;
-  color: var(--AQUAMARINE);
 }
 .header__subtitle {
   font-size: 32px;
-  color: var(--SILVERSAND);
+  font-weight: normal;
 }
-.header__cta {
-  color: var(--KEPPEL);
+.body__cta {
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 16px;
 }
 .content {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MOBILE STYLES */
+@media only screen and (max-width: 480px) {
+  .header__title {
+    font-size: 36px;
+  }
+  .header__subtitle {
+    font-size: 24px;
+  }
+  .body__cta {
+    padding: 8px;
+    font-size: 20px;
+  }
+}
+
+/*
+  ########################## PROJECTS ##########################
+ */
+.projects__container {
+  margin: 0 auto;
+  width: 80vw;
 }
 .projects__items {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 64px;
   margin: 0 64px;
 }
-.projects__item {
-
-}
 .projects__card {
-  border: 5px solid var(--KEPPEL);
+  border: 2px solid var(--C3);
   border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 .projects__card > img {
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
-.projects__card > span {
-  color: var(--AQUAMARINE);
+.card__description {
   font-size: 32px;
-}
-.footer{
-  text-align: center;
-  background-color: var(--EBONYCLAY);
 }
 #greeting-container {
   margin-top: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  .projects__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 32px;
+    margin: 0 16px;
+  }
+}
+
+/*
+  ########################## ORIGAMI GALLERY ##########################
+*/
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 32px;
+  grid-row-gap: 32px;
+  margin: 32px auto;
+  width: 70vw; /* */
+}
+.gallery__card {
+  padding: 16px;
+  border: 2px solid var(--C3);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.gallery__card > img {
+  width: 100%; /* force image to shrink to width specified by grid */
+}
+.gallery__card > div {
+  text-align: center;
+}
+
+@media only screen and (max-width: 480px) {
+  #gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
