@@ -1,5 +1,7 @@
-async function getIntroduction() {
-    const response = await fetch('/introduction');
-    const text = await response.text();
-    document.getElementById('introduction').innerHTML = text;
+async function getComments() {
+    const response = await fetch('/comments');
+    const json = await response.text(); // collection of comments
+    console.log(typeof json);
+
+    document.getElementById('comments').innerText = json;
 }
