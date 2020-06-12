@@ -5,18 +5,19 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="./images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/resources/images/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
   </head>
   <body>
     <nav class="nav">
       <div class="nav__logo"><a href="index.html">HOME</a></div>
       <div class="nav__items">
         <div class="nav__item">
-          <a href="projects.html">Projects</a>
+          <a href="navigation/projects/projects.html">Projects</a>
         </div>
         <div class="nav__item">
-          <a href="origami.html">Interests</a>
+          <a href="navigation/origami/origami.html">Interests</a>
         </div>
         <div class="nav__item">
           <a href="https://github.com/KendrickAng" target="_blank">Github</a>
@@ -33,9 +34,13 @@
         <h3 class="header__subtitle">Software Engineer 😊 @ National University of Singapore</h3>
       </div>
         <button class="body__cta">
-          <a href="files/resume.pdf" target="_blank">See what I've been up to!</a>
+          <a href="/resources/documents/resume.pdf" target="_blank">See what I've been up to!</a>
         </button>
-
     </main>
+
+    <footer>
+      <button onclick="getIntroduction()">Fetch an introduction!</button>
+      <div id="introduction"></div>
+    </footer>
   </body>
 </html>

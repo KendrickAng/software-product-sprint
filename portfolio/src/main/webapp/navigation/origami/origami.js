@@ -1,7 +1,7 @@
 // number of images in the origami folder, hardcoded :(
 const NUMBER_OF_IMAGES = 20;
 const SINGLE_DIGIT_LIMIT = 9;
-const PATH_PREFIX = 'images/origami/';
+const PATH_PREFIX = '/resources/images/origami/';
 const CARD_CN = 'gallery__card';
 
 function loadOrigamiToGallery() {
