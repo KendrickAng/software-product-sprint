@@ -16,10 +16,9 @@ package com.google.sps.servlets;
 
 import com.google.gson.Gson;
 import com.google.sps.data.Comments;
+import com.google.sps.data.Constants;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,14 +31,20 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    comments.addComment("Hello world!");
-    comments.addComment("I am a new String.");
-    comments.addComment("How are you today?");
-
     String json = new Gson().toJson(comments);
-    System.out.println(json);
 
-    response.setContentType("application/json");
+    response.setContentType(Constants.TYPE_JSON);
     response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String comment = extractComment(request);
+    comments.addComment(comment);
+    response.sendRedirect(Constants.LINK_HOME);
+  }
+
+  private String extractComment(HttpServletRequest request) {
+    return request.getParameter(Constants.FORM_COMMENT);
   }
 }

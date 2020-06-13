@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getComments()">
     <nav class="nav">
       <div class="nav__logo"><a href="index.html">HOME</a></div>
       <div class="nav__items">
@@ -38,8 +38,13 @@
         </button>
     </main>
 
+    <form action="/comments" method="post">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="user_comment" placeholder="say hello!"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
     <footer>
-      <button onclick="getComments()">Fetch an introduction!</button>
       <div id="comments"></div>
     </footer>
   </body>
