@@ -33,19 +33,19 @@
         <h1 class="header__title">Kendrick Ang</h1>
         <h3 class="header__subtitle">Software Engineer 😊 @ National University of Singapore</h3>
       </div>
-        <button class="body__cta">
-          <a href="/resources/documents/resume.pdf" target="_blank">See what I've been up to!</a>
-        </button>
+
+      <button class="body__cta">
+        <a href="/resources/documents/resume.pdf" target="_blank">See what I've been up to!</a>
+      </button>
+
+      <section>
+        <form action="/comments" method="post">
+          <label for="comment">Comment:</label>
+          <input type="text" id="comment" name="user_comment" placeholder="say hello!">
+          <button type="submit">Submit</button>
+        </form>
+        <div id="comments"></div>
+      </section>
     </main>
-
-    <form action="/comments" method="post">
-      <label for="comment">Comment:</label>
-      <textarea id="comment" name="user_comment" placeholder="say hello!"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-
-    <footer>
-      <div id="comments"></div>
-    </footer>
   </body>
 </html>
