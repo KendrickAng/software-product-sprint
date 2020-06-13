@@ -43,9 +43,10 @@ public class DataServlet extends HttpServlet {
 
     List<Comment> comments = new ArrayList<>();
     for (Entity entity: preparedQuery.asIterable()) {
+      String name = (String) entity.getProperty(Constants.PROPERTY_NAME);
       String content = (String) entity.getProperty(Constants.PROPERTY_CONTENT);
       long timestamp = (long) entity.getProperty(Constants.PROPERTY_TIMESTAMP);
-      comments.add(new Comment(content, timestamp));
+      comments.add(new Comment(name, content, timestamp));
     }
 
     String json = new Gson().toJson(comments);
@@ -57,10 +58,12 @@ public class DataServlet extends HttpServlet {
   // adds a comment entity to the datastore together with timestamp, provided the comment is non-empty.
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String name = System.getProperty("user.name");
     String content = request.getParameter(Constants.FORM_COMMENT);
     long timestamp = System.currentTimeMillis();
 
     Entity commentEntity = new Entity(Constants.KIND_COMMENT);
+    commentEntity.setProperty(Constants.PROPERTY_NAME, name);
     commentEntity.setProperty(Constants.PROPERTY_CONTENT, content);
     commentEntity.setProperty(Constants.PROPERTY_TIMESTAMP, timestamp);
 

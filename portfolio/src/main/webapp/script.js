@@ -12,10 +12,11 @@ function insertComments(comments, container) {
     const commentsContainer = document.createElement('ul');
     commentsContainer.className = 'comments__container';
 
-    for (let { content, timestamp } of comments) {
+    for (let { name, content, timestamp } of comments) {
+        name = name ? name : 'Anonymous';
         const commentsItem = document.createElement('li');
         const date = new Date(timestamp).toDateString();
-        commentsItem.innerText = `${content} ${date}`;
+        commentsItem.innerText = `${content} - ${name}, ${date}`;
         commentsContainer.appendChild(commentsItem);
     }
 

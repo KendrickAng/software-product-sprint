@@ -16,4 +16,5 @@ public final class Constants {
     public static final String KIND_COMMENT = "Comment";
     public static final String PROPERTY_CONTENT = "content";
     public static final String PROPERTY_TIMESTAMP = "timestamp";
+    public static final String PROPERTY_NAME = "name";
 }
