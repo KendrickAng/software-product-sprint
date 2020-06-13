@@ -40,6 +40,13 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String comment = extractComment(request);
+
+    // don't add empty (useless) comments
+    if (comment.isEmpty()) {
+      response.sendRedirect(Constants.LINK_HOME);
+      return;
+    }
+
     comments.addComment(comment);
     response.sendRedirect(Constants.LINK_HOME);
   }
