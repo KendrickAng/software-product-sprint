@@ -2,7 +2,7 @@ package com.google.sps.data;
 
 public final class Constants {
     // landing page of the website
-    public static final String LINK_FEEDBACK = "/feedback.html";
+    public static final String LINK_FEEDBACK = "/navigation/feedback/feedback.html";
 
     // mime type for json payloads
     public static final String TYPE_JSON = "application/json";
