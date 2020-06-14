@@ -69,11 +69,12 @@ public class DataServlet extends HttpServlet {
 
     // don't add empty (useless) comments
     if (content.isEmpty()) {
-      response.sendRedirect(Constants.LINK_HOME);
+      // TODO: There shouldn't be side effects in a post request, migrate redirection to js, use window.location.replace
+      response.sendRedirect(Constants.LINK_FEEDBACK);
       return;
     }
 
     datastore.put(commentEntity);
-    response.sendRedirect(Constants.LINK_HOME);
+    response.sendRedirect(Constants.LINK_FEEDBACK);
   }
 }

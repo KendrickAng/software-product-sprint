@@ -5,6 +5,7 @@ const DEFAULT_USER_NAME = 'Anonymous';
 
 // fetches comments from the server and populates the html element with id 'comments'
 async function getComments() {
+    // TODO: Handle the unhappy path
     const response = await fetch('/comments');
     const comments = await response.json(); // collection of comments
     const container = document.getElementById(ID_COMMENTS);
