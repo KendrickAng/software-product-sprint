@@ -194,3 +194,21 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/*
+  ########################## FEEDBACK PAGE ##########################
+*/
+.feedback__container {
+  margin: 0 auto;
+  width: 80vw;
+}
+.comments__container {
+
+}
+.comments__item {
+
+}
+
+@media only screen and (max-width: 480px) {
+
+}
