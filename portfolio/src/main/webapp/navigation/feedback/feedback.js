@@ -2,9 +2,8 @@ const CLASSNAME_COMMENTS_CONTAINER = 'comments__container';
 const CLASSNAME_COMMENTS_ITEM = 'comments__item';
 const ID_COMMENTS = 'comments';
 const DEFAULT_USER_NAME = 'Anonymous';
-const LINK_FEEDBACK = '/navigation/feedback/feedback.html';
 
-// fetches comments from the server and populates the html element with id 'comments'
+// fetches comments from the server and populates the html element with id 'comments'.
 async function getComments() {
     const response = await fetch('/comments');
     const container = document.getElementById(ID_COMMENTS);
@@ -16,7 +15,7 @@ async function getComments() {
     }
 }
 
-// Accepts an array of { content: String, timestamp: long }, and adds them to the 'comments' element
+// Accepts an array of { content: String, timestamp: long }, and adds them to the 'comments' element.
 function insertComments(comments, container) {
     console.log(comments);
     const commentsContainer = document.createElement('ul');
