@@ -17,9 +17,7 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.*;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
-import com.google.sps.data.Comments;
 import com.google.sps.data.Constants;
-import com.sun.org.apache.bcel.internal.Const;
 
 import java.io.IOException;
 import java.util.ArrayList;
