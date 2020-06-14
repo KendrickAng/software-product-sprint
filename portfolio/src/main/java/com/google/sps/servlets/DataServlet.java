@@ -32,7 +32,9 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
   private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-  // Retrieves all comments and returns it as a JSON string, sorted in descending timestamp { comments: [...] }
+  /**
+   * Retrieves all comments and returns it as an array of POJOs, sorted by latest comment first.
+   */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query(Constants.KIND_COMMENT)
@@ -53,7 +55,9 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-  // adds a comment entity to the datastore together with timestamp, provided the comment is non-empty.
+  /**
+   * Adds a 'Comment' entity kind to the datastore together with timestamp, provided the comment is non-empty.
+   */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String name = System.getProperty("user.name");
@@ -67,7 +71,6 @@ public class DataServlet extends HttpServlet {
 
     // don't add empty (useless) comments
     if (content.isEmpty()) {
-      // TODO: There shouldn't be side effects in a post request, migrate redirection to js, use window.location.replace
       response.sendRedirect(Constants.LINK_FEEDBACK);
       return;
     }
