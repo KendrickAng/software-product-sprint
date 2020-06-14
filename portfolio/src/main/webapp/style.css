@@ -78,7 +78,7 @@ footer {
     font-size: 16px;
   }
   .nav__item {
-    font-size: 12px;
+    font-size: 8px;
     padding: 4px 4px;
   }
 }
@@ -192,5 +192,44 @@ footer {
 @media only screen and (max-width: 480px) {
   #gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*
+  ########################## FEEDBACK PAGE ##########################
+*/
+.feedback__container {
+  margin: 0 auto;
+  width: 80vw;
+}
+.form {
+  padding: 8px;
+}
+.form__input {
+  width: 50%;
+}
+.comments__container {
+  /* remove default ul styling */
+  padding: 0;
+}
+.comments__item {
+  list-style-type: none;
+}
+.comments__item:nth-child(even) {
+  background-color: var(--C3);
+}
+.comments__item:nth-child(odd) {
+  background-color: var(--C1);
+}
+
+@media only screen and (max-width: 480px) {
+  .form__label {
+    font-size: 8px;
+  }
+  .form__submit {
+    font-size: 8px;
+  }
+  .comments__item {
+    font-size: 8px;
   }
 }

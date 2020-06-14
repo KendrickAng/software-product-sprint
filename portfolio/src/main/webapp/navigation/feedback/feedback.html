@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Origami</title>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/resources/images/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="/navigation/feedback/feedback.js"></script>
+</head>
+<body onload="getComments()">
+    <nav class="nav">
+        <div class="nav__logo"><a href="../../index.html">HOME</a></div>
+        <div class="nav__items">
+            <div class="nav__item">
+                <a href="/navigation/projects/projects.html">Projects</a>
+            </div>
+            <div class="nav__item">
+                <a href="/navigation/origami/origami.html">Interests</a>
+            </div>
+            <div class="nav__item">
+                <a href="/navigation/feedback/feedback.html">Feedback</a>
+            </div>
+            <div class="nav__item">
+                <a href="https://github.com/KendrickAng">Github</a>
+            </div>
+            <div class="nav__item">
+                <a href="https://www.linkedin.com/in/kendrickang/">LinkedIn</a>
+            </div>
+        </div>
+    </nav>
+    <section class="feedback__container">
+        <form class="form" action="/comments" method="post">
+            <label class="form__label" for="comment">Comment:</label>
+            <input class="form__input" type="text" id="comment" name="user_comment" maxlength="280" placeholder="say hello!">
+            <button class="form__submit" type="submit">Submit</button>
+        </form>
+        <div id="comments"></div>
+    </section>
+</body>
+</html>

@@ -14,19 +14,71 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.*;
+import com.google.gson.Gson;
+import com.google.sps.data.Comment;
+import com.google.sps.data.Constants;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+@WebServlet("/comments")
 public class DataServlet extends HttpServlet {
+  private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
+  /**
+   * Retrieves all comments and returns it as an array of POJOs, sorted by latest comment first.
+   */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
+    Query query = new Query(Constants.KIND_COMMENT)
+            .addSort(Constants.PROPERTY_TIMESTAMP, Query.SortDirection.DESCENDING);
+    PreparedQuery preparedQuery = datastore.prepare(query);
+
+    List<Comment> comments = StreamSupport
+            .stream(preparedQuery.asIterable().spliterator(), false)
+            .map(entity -> {
+              String name = (String) entity.getProperty(Constants.PROPERTY_NAME);
+              String content = (String) entity.getProperty(Constants.PROPERTY_CONTENT);
+              long timestamp = (long) entity.getProperty(Constants.PROPERTY_TIMESTAMP);
+              return new Comment(name, content, timestamp);
+            })
+            .collect(Collectors.toList());
+
+    String json = new Gson().toJson(comments);
+    response.setContentType(Constants.TYPE_JSON);
+    response.getWriter().println(json);
+  }
+
+  /**
+   * Adds a 'Comment' entity kind to the datastore together with timestamp, provided the comment is non-empty.
+   */
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String content = request.getParameter(Constants.FORM_COMMENT);
+    // don't add empty (useless) comments
+    if (content.isEmpty()) {
+      response.sendRedirect(Constants.LINK_FEEDBACK);
+      return;
+    }
+
+    String name = System.getProperty("user.name");
+    long timestamp = System.currentTimeMillis();
+
+    Entity commentEntity = new Entity(Constants.KIND_COMMENT);
+    commentEntity.setProperty(Constants.PROPERTY_NAME, name);
+    commentEntity.setProperty(Constants.PROPERTY_CONTENT, content);
+    commentEntity.setProperty(Constants.PROPERTY_TIMESTAMP, timestamp);
+
+    datastore.put(commentEntity);
+    response.sendRedirect(Constants.LINK_FEEDBACK);
   }
 }
