@@ -29,7 +29,7 @@
       <artifactId>gson</artifactId>
       <version>2.8.6</version>
     </dependency>
-    <!-- Google app engine SDK, for Datastore -->
+    <!-- Google app engine SDK, for Datastore, Users -->
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>

@@ -11,28 +11,30 @@ async function getComments() {
         const comments = await response.json(); // collection of comments
         insertComments(comments, container);
     } else {
-        handleError(container);
+        handleError(response, container);
     }
 }
 
 // Accepts an array of { content: String, timestamp: long }, and adds them to the 'comments' element.
 function insertComments(comments, container) {
-    console.log(comments);
     const commentsContainer = document.createElement('ul');
     commentsContainer.className = CLASSNAME_COMMENTS_CONTAINER;
 
-    for (let { name, content, timestamp } of comments) {
-        name = name ? name : DEFAULT_USER_NAME;
+    comments.forEach(comment => {
+        const { name=DEFAULT_USER_NAME, content, timestamp} = comment;
+        const date = new Date(timestamp).toDateString();
+
         const commentsItem = document.createElement('li');
         commentsItem.className = CLASSNAME_COMMENTS_ITEM;
-        const date = new Date(timestamp).toDateString();
         commentsItem.innerText = `${content} - ${name}, ${date}`;
+
         commentsContainer.appendChild(commentsItem);
-    }
+    });
 
     container.appendChild(commentsContainer);
 }
 
-function handleError(container) {
+function handleError(response, container) {
+    console.error(`${response.status} ${response.statusText}`);
     container.innerText = "We can't retrieve the comments now. Please try again later 😞";
 }
