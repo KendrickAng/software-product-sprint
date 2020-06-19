@@ -19,7 +19,7 @@ const HEADER_GITHUB = "Github";
 const HEADER_LINKEDIN = "LinkedIn";
 
 async function loadNav() {
-    const res = await fetch("/auth");
+    const isAuth = await fetch("/auth");
 
     const nav = document.createElement('nav');
     nav.className = CLASSNAME_NAV;
@@ -77,27 +77,37 @@ async function loadNav() {
     // Login/Logout link
     const navItemLogin = document.createElement('div');
     navItemLogin.className = CLASSNAME_NAV_ITEM;
-    if (res.ok) {
-        const aLogin = await res.text();
-        navItemLogin.innerHTML = aLogin;
-    }
+    fetch("/auth/generate-login-link")
+        .then(res => res.text())
+        .then(authLink => navItemLogin.innerHTML = authLink)
+        .catch(err => console.error(err));
 
     // Build the nav
     navItems.appendChild(navItemProjects);
     navItems.appendChild(navItemOrigami);
     navItems.appendChild(navItemGithub);
     navItems.appendChild(navItemLinkedIn);
-    if (res.ok) {
-        // auth-specific pages
-        navItems.appendChild(navItemFeedback);
-        navItems.appendChild(navItemLogin);
-    }
+    fetch("/auth")
+        .then(res => res.text())
+        .then(isAuthRes => {
+            if (isAuthRes === String(true)) {
+                // auth-specific pages
+                insertBefore(navItemLogin, navItemFeedback);
+            }
+        });
+    navItems.appendChild(navItemLogin);
     nav.appendChild(navLogo);
     nav.appendChild(navItems);
 
     const body = document.getElementsByTagName('body')[0];
     body.insertBefore(nav, body.firstChild);
-    console.log("DONE!")
+}
+
+function insertBefore(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode);
+}
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 loadNav().catch(err => console.error(err));

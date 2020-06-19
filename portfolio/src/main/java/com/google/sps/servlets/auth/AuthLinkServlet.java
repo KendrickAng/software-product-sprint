@@ -1,4 +1,4 @@
-package com.google.sps.servlets;
+package com.google.sps.servlets.auth;
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet that handles authenticating users.
+ * Servlet that handles generation of links to login/logout users.
  */
-@WebServlet("/auth")
-public class AuthServlet extends HttpServlet {
+@WebServlet("/auth/generate-login-link")
+public class AuthLinkServlet extends HttpServlet {
     private static final String urlToRedirectOnLogin = Constants.LINK_HOME;
     private static final String urlToRedirectOnLogout = Constants.LINK_HOME;
 
@@ -31,10 +31,5 @@ public class AuthServlet extends HttpServlet {
         } else {
             res.getWriter().printf("<a href='%s'>Login</a>", svc.createLoginURL(urlToRedirectOnLogin));
         }
-    }
-
-    @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse res) {
-
     }
 }
