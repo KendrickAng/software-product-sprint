@@ -11,7 +11,7 @@ public final class Constants {
     public static final String TYPE_JSON = "application/json";
     public static final String TYPE_HTML = "text/html";
 
-    // name of the comment form field in index.js.
+    // name of the comment form field in global.js.
     public static final String FORM_COMMENT = "user_comment";
 
     // specifies the comment entity 'kind'.
