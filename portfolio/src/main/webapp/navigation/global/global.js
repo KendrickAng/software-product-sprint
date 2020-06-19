@@ -58,21 +58,21 @@ async function loadNav() {
     aFeedback.innerText = HEADER_FEEDBACK;
     navItemFeedback.append(aFeedback);
 
-    // Github hyperlink
-    const navItemGithub = document.createElement('div');
-    navItemGithub.className = CLASSNAME_NAV_ITEM;
-    const aGithub = document.createElement('a');
-    aGithub.href = LINK_GITHUB;
-    aGithub.innerText = HEADER_GITHUB;
-    navItemGithub.appendChild(aGithub);
-
-    // Linkedin hyperlink
-    const navItemLinkedIn = document.createElement('div');
-    navItemLinkedIn.className = CLASSNAME_NAV_ITEM;
-    const aLinkedIn = document.createElement('a');
-    aLinkedIn.href = LINK_LINKEDIN;
-    aLinkedIn.innerText = HEADER_LINKEDIN;
-    navItemLinkedIn.appendChild(aLinkedIn);
+    // // Github hyperlink
+    // const navItemGithub = document.createElement('div');
+    // navItemGithub.className = CLASSNAME_NAV_ITEM;
+    // const aGithub = document.createElement('a');
+    // aGithub.href = LINK_GITHUB;
+    // aGithub.innerText = HEADER_GITHUB;
+    // navItemGithub.appendChild(aGithub);
+    //
+    // // Linkedin hyperlink
+    // const navItemLinkedIn = document.createElement('div');
+    // navItemLinkedIn.className = CLASSNAME_NAV_ITEM;
+    // const aLinkedIn = document.createElement('a');
+    // aLinkedIn.href = LINK_LINKEDIN;
+    // aLinkedIn.innerText = HEADER_LINKEDIN;
+    // navItemLinkedIn.appendChild(aLinkedIn);
 
     // Login/Logout link
     const navItemLogin = document.createElement('div');
@@ -85,8 +85,8 @@ async function loadNav() {
     // Build the nav
     navItems.appendChild(navItemProjects);
     navItems.appendChild(navItemOrigami);
-    navItems.appendChild(navItemGithub);
-    navItems.appendChild(navItemLinkedIn);
+    // navItems.appendChild(navItemGithub);
+    // navItems.appendChild(navItemLinkedIn);
     fetch("/auth")
         .then(res => res.text())
         .then(isAuthRes => {
@@ -103,11 +103,14 @@ async function loadNav() {
     body.insertBefore(nav, body.firstChild);
 }
 
+loadNav().catch(err => console.error(err));
+
+/*
+============================== UTILITY FUNCTIONS ==============================
+ */
 function insertBefore(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode);
 }
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
-
-loadNav().catch(err => console.error(err));
