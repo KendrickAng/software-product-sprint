@@ -110,6 +110,7 @@ footer {
 }
 .body__logo {
   margin: 8px;
+  height: 100%;
 }
 .content {
   display: flex;

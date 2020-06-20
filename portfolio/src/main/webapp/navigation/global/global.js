@@ -9,18 +9,12 @@ const LINK_ROOT = "/index.html";
 const LINK_PROJECTS = "/navigation/projects/projects.html";
 const LINK_ORIGAMI = "/navigation/origami/origami.html";
 const LINK_FEEDBACK = "/navigation/feedback/feedback.html";
-const LINK_GITHUB = "https://github.com/KendrickAng";
-const LINK_LINKEDIN = "https://www.linkedin.com/in/kendrickang/";
 const HEADER_ROOT = "HOME";
 const HEADER_PROJECTS = "Projects";
 const HEADER_ORIGAMI = "Origami";
 const HEADER_FEEDBACK = "Feedback";
-const HEADER_GITHUB = "Github";
-const HEADER_LINKEDIN = "LinkedIn";
 
 async function loadNav() {
-    const isAuth = await fetch("/auth");
-
     const nav = document.createElement('nav');
     nav.className = CLASSNAME_NAV;
 
@@ -58,22 +52,6 @@ async function loadNav() {
     aFeedback.innerText = HEADER_FEEDBACK;
     navItemFeedback.append(aFeedback);
 
-    // // Github hyperlink
-    // const navItemGithub = document.createElement('div');
-    // navItemGithub.className = CLASSNAME_NAV_ITEM;
-    // const aGithub = document.createElement('a');
-    // aGithub.href = LINK_GITHUB;
-    // aGithub.innerText = HEADER_GITHUB;
-    // navItemGithub.appendChild(aGithub);
-    //
-    // // Linkedin hyperlink
-    // const navItemLinkedIn = document.createElement('div');
-    // navItemLinkedIn.className = CLASSNAME_NAV_ITEM;
-    // const aLinkedIn = document.createElement('a');
-    // aLinkedIn.href = LINK_LINKEDIN;
-    // aLinkedIn.innerText = HEADER_LINKEDIN;
-    // navItemLinkedIn.appendChild(aLinkedIn);
-
     // Login/Logout link
     const navItemLogin = document.createElement('div');
     navItemLogin.className = CLASSNAME_NAV_ITEM;
@@ -85,8 +63,6 @@ async function loadNav() {
     // Build the nav
     navItems.appendChild(navItemProjects);
     navItems.appendChild(navItemOrigami);
-    // navItems.appendChild(navItemGithub);
-    // navItems.appendChild(navItemLinkedIn);
     fetch("/auth")
         .then(res => res.text())
         .then(isAuthRes => {
