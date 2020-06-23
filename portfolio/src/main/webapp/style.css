@@ -99,10 +99,18 @@ footer {
   font-size: 32px;
   font-weight: normal;
 }
+.body {
+  display: flex;
+  align-items: center;
+}
 .body__cta {
   font-size: 16px;
   border-radius: 4px;
   padding: 16px;
+}
+.body__logo {
+  margin: 8px;
+  height: 100%;
 }
 .content {
   display: flex;
