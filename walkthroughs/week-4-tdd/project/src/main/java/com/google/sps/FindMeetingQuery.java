@@ -33,9 +33,6 @@ public final class FindMeetingQuery {
       throw new RuntimeException("input variables should be non-null!");
     }
 
-    // start off with all time slots being free
-    Collection<TimeRange> ret = new ArrayList<>();
-
     long meetingDuration = request.getDuration();
     Collection<String> meetingAttendees = request.getAttendees();
     boolean[] freeTimePoints = new boolean[TimeRange.END_OF_DAY - TimeRange.START_OF_DAY + 1];
