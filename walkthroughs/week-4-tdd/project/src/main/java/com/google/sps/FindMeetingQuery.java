@@ -18,8 +18,11 @@ import java.sql.Time;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 public final class FindMeetingQuery {
+  public static final Collection<TimeRange> EMPTY_QUERY = new ArrayList<>();
+  public static final Collection<TimeRange> FULL_QUERY = Stream.of(TimeRange.WHOLE_DAY).collect(Collectors.toList());
   /**
    * Assumptions: request and events are all valid, but can be non-null.
    * - Request has duration larger than 0, and at least one attendee.
@@ -32,16 +35,69 @@ public final class FindMeetingQuery {
 
     // start off with all time slots being free
     Collection<TimeRange> ret = new ArrayList<>();
-    ret.add(TimeRange.WHOLE_DAY);
 
     long meetingDuration = request.getDuration();
     Collection<String> meetingAttendees = request.getAttendees();
+    boolean[] freeTimePoints = new boolean[TimeRange.END_OF_DAY - TimeRange.START_OF_DAY + 1];
+    Arrays.fill(freeTimePoints, true);
 
     // no attendees
     if (meetingAttendees.isEmpty()) {
-      return ret;
+      return FULL_QUERY;
     }
 
+    // request too long
+    if (meetingDuration > TimeRange.WHOLE_DAY.duration()) {
+      return EMPTY_QUERY;
+    }
+
+    // filter out events where no attendees are involved in the meeting.
+    events = events.stream().filter(event -> {
+      for (String attendee: event.getAttendees()) {
+        if (meetingAttendees.contains(attendee)) {
+          return true;
+        }
+      }
+      return false;
+    }).collect(Collectors.toList());
+
+    // go through all requests and split the remaining timings.
+    events.forEach(event -> {
+      int start = event.getWhen().start();
+      int end = event.getWhen().end();
+      for (int i = start; i < end; i++) {
+        freeTimePoints[i] = false;
+      }
+    });
+
+    return generateResult(freeTimePoints, meetingDuration);
+  }
+
+  /**
+   * Returns all time ranges that meet the minimum duration requirement.
+   * E.g [T T T F T] -> { TimeRange(0, 3, false), TimeRange(4, 5, false) }
+   */
+  private Collection<TimeRange> generateResult(boolean[] freeTimePoints, long minimumDuration) {
+    Collection<TimeRange> ret = new ArrayList<>();
+    int marker = 0;
+    boolean markerDropped = false;
+
+    for (int current = 0; current < freeTimePoints.length; current++) {
+      if (!freeTimePoints[current] && markerDropped) {
+        if (current - marker + 1 >= minimumDuration) {
+          ret.add(TimeRange.fromStartEnd(marker, current, false));
+        }
+        markerDropped = false;
+      } else if (freeTimePoints[current] && !markerDropped) {
+        marker = current;
+        markerDropped = true;
+      }
+      // otherwise, continue
+    }
+
+    if (markerDropped) {
+      ret.add(TimeRange.fromStartEnd(marker, freeTimePoints.length, false));
+    }
     return ret;
   }
 }
