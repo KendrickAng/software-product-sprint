@@ -14,10 +14,34 @@
 
 package com.google.sps;
 
-import java.util.Collection;
+import java.sql.Time;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public final class FindMeetingQuery {
+  /**
+   * Assumptions: request and events are all valid, but can be non-null.
+   * - Request has duration larger than 0, and at least one attendee.
+   * - Each Event has a time range within the day, and may have no attendees.
+   */
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    if (events == null || request == null) {
+      throw new RuntimeException("input variables should be non-null!");
+    }
+
+    // start off with all time slots being free
+    Collection<TimeRange> ret = new ArrayList<>();
+    ret.add(TimeRange.WHOLE_DAY);
+
+    long meetingDuration = request.getDuration();
+    Collection<String> meetingAttendees = request.getAttendees();
+
+    // no attendees
+    if (meetingAttendees.isEmpty()) {
+      return ret;
+    }
+
+    return ret;
   }
 }
